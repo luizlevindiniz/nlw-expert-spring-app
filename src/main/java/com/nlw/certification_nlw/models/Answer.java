@@ -22,14 +22,14 @@ public class Answer {
     private UUID certificationID;
 
     @ManyToOne
-    @JoinColumn(name = "certification_id", updatable = false, insertable = false)
+    @JoinColumn(name = "certification_id",updatable = false, insertable = false)
     private Certification certification;
 
     @Column(name = "student_id")
     private UUID studentID;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", updatable = false, insertable = false)
+    @JoinColumn(name = "student_id",updatable = false, insertable = false)
     private Student student;
 
     @Column(name = "question_id")

@@ -3,7 +3,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 import java.util.List;
 @Data
@@ -28,6 +30,10 @@ public class Certification {
     private Student student;
 
     @OneToMany
+    @JoinColumn(name = "certification_id",insertable = false,updatable = false)
     private List<Answer> answers;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
 }

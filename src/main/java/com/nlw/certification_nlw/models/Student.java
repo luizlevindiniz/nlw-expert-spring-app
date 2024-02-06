@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,4 +22,8 @@ public class Student {
     private String email;
     @OneToMany(mappedBy = "student")
     private List<Certification> certification;
+
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 }
