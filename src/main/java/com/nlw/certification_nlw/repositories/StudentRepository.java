@@ -1,15 +1,17 @@
 package com.nlw.certification_nlw.repositories;
 
-import com.nlw.certification_nlw.models.Question;
+import com.nlw.certification_nlw.models.Student;
 import org.hibernate.annotations.processing.Find;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface FindQuestionsByRepository extends JpaRepository<Question, UUID> {
+public interface StudentRepository extends JpaRepository<Student, UUID> {
+
     @Find
-    List<Question> findQuestionsByTech(String tech);
+    Student findStudentByEmail(String email);
+
+
 }

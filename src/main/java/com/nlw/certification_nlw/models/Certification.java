@@ -1,6 +1,9 @@
 package com.nlw.certification_nlw.models;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "certifications")
+@Builder
 public class Certification {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -30,8 +34,9 @@ public class Certification {
     @JoinColumn(name = "student_id",insertable = false,updatable = false)
     private Student student;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "certification_id",insertable = false,updatable = false)
+    @JsonManagedReference
     private List<Answer> answers;
 
     @CreationTimestamp
